@@ -1,4 +1,13 @@
+<!--
+  README.md for Echelon Dev Society Landing Page
+-->
+
 # 📌 Echelon Dev Society - Landing Page
+
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Web](https://img.shields.io/badge/Web-Responsive-blue?style=for-the-badge)](https://nilesheds.vercel.app/)
+[![Dark/Light Mode](https://img.shields.io/badge/Theme-Dark%2FLight-purple?style=for-the-badge)](https://nilesheds.vercel.app/)
 
 Welcome! This is a **fully responsive landing page** for **Echelon Dev Society (EDS)**, created as a task to demonstrate frontend development skills.
 
@@ -9,13 +18,11 @@ Built entirely with **Flutter Web** and deployed on **Vercel**. Works on **Web, 
 ## 🚀 Live Project
 
 Experience the project in action:  
-<a href="https://nilesheds.vercel.app/" target="_blank">➡ Visit Live Project ⬅</a>
+[➡ Visit Live Project ⬅](https://nilesheds.vercel.app/)
 
 ---
 
 ## 📸 Project Screenshots
-
-Take a look at the landing page in both **light** and **dark** themes:
 
 <table>
   <tr>
@@ -23,24 +30,20 @@ Take a look at the landing page in both **light** and **dark** themes:
     <th>Dark Theme</th>
   </tr>
   <tr>
-    <td><img src="mocupfolder/home-light.png" alt="Home Light" width="100%"></td>
-    <td><img src="mocupfolder/home-dark.png" alt="Home Dark" width="100%"></td>
+    <td><img src="mocups/home_light.png" alt="Home Light" width="100%"></td>
+    <td><img src="mocups/home_dark.png" alt="Home Dark" width="100%"></td>
   </tr>
   <tr>
-    <td><img src="mocupfolder/about-light.png" alt="About Light" width="100%"></td>
-    <td><img src="mocupfolder/about-dark.png" alt="About Dark" width="100%"></td>
+    <td><img src="mocups/about_light.png" alt="About Light" width="100%"></td>
+    <td><img src="mocups/about_dark.png" alt="About Dark" width="100%"></td>
   </tr>
   <tr>
-    <td><img src="mocupfolder/events-light.png" alt="Events Light" width="100%"></td>
-    <td><img src="mocupfolder/events-dark.png" alt="Events Dark" width="100%"></td>
+    <td><img src="mocups/events_light.png" alt="Events Light" width="100%"></td>
+    <td><img src="mocups/events_dark.png" alt="Events Dark" width="100%"></td>
   </tr>
   <tr>
-    <td><img src="mocupfolder/team-light.png" alt="Team Light" width="100%"></td>
-    <td><img src="mocupfolder/team-dark.png" alt="Team Dark" width="100%"></td>
-  </tr>
-  <tr>
-    <td><img src="mocupfolder/footer-light.png" alt="Footer Light" width="100%"></td>
-    <td><img src="mocupfolder/footer-dark.png" alt="Footer Dark" width="100%"></td>
+    <td><img src="mocups/team_light.png" alt="Team Light" width="100%"></td>
+    <td><img src="mocups/team_dark.png" alt="Team Dark" width="100%"></td>
   </tr>
 </table>
 
@@ -48,12 +51,12 @@ Take a look at the landing page in both **light** and **dark** themes:
 
 ## 🛠️ Features
 
-- 🌍 **Cross-Platform:** Works on Web, Android, and iOS  
+- 🌍 **Cross-Platform:** Web, Android, iOS  
 - ⚡ **Fast & Lightweight:** Optimized Flutter Web app  
 - 🎨 **Modern UI:** Clean, interactive, responsive interface  
-- 📁 **Core Sections:** Header, About, Events/Projects, Team, Footer  
+- 📁 **Core Sections:** Header, About, Team, Event , Footer  
 - 🔄 **Dark/Light Mode:** Adaptive color themes  
-- 📦 **Animations:** Event cards animate when scrolled into view  
+- 📦 **Animations:**  cards animate when scrolled into view  
 
 ---
 
@@ -84,13 +87,6 @@ I implemented all requirements using **Flutter Web**, including animations and r
 
 ---
 
-## 📂 Screenshots in Mockups Folder
-
-- All screenshots are stored in the `mocupfolder` of this repository.  
-- Includes **light** and **dark** theme versions.
-
----
-
 ## 🎯 Why This Project?
 
 This project was done as a **task to join Echelon Dev Society (EDS)**. It demonstrates:
@@ -115,10 +111,10 @@ This project was done as a **task to join Echelon Dev Society (EDS)**. It demons
 
 ## 🔗 Connect With Me
 
-- 📷 Instagram: [@nilesh__pr_](https://www.instagram.com/nilesh__pr_/)
-- 💼 Work Instagram: [@its.nilesh_pr](https://www.instagram.com/its.nilesh_pr/)
-- 👨‍💻 LinkedIn: [Nilesh Prajapat](https://www.linkedin.com/in/nilesh-prajapat)
-- 🐙 GitHub: [nilesh-prajapat](https://github.com/nilesh-prajapat)
+- 📷 Instagram: [@nilesh__pr_](https://www.instagram.com/nilesh__pr_/)  
+- 💼 Work Instagram: [@its.nilesh_pr](https://www.instagram.com/its.nilesh_pr/)  
+- 👨‍💻 LinkedIn: [Nilesh Prajapat](https://www.linkedin.com/in/nilesh-prajapat)  
+- 🐙 GitHub: [nilesh-prajapat](https://github.com/nilesh-prajapat)  
 
 ---
 
