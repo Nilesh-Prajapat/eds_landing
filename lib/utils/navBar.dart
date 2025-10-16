@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:eds_landing/pages/aboutUs.dart';
-import 'package:eds_landing/pages/contactUs.dart';
+import 'package:eds_landing/pages/footer.dart';
 import 'package:eds_landing/pages/events.dart';
 import 'package:eds_landing/pages/team.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +16,13 @@ class GlassyNavPage extends StatefulWidget {
   State<GlassyNavPage> createState() => _GlassyNavPageState();
 }
 class _GlassyNavPageState extends State<GlassyNavPage> {
-  final List<String> navItems = ['Home', 'About Us', 'Team', 'Events', 'Contact Us'];
+  final List<String> navItems = ['Home', 'About Us', 'Team', 'Events'];
   final Map<String, GlobalKey> sectionKeys = {
     'home': GlobalKey(),
     'aboutus': GlobalKey(),
     'team': GlobalKey(),
     'events': GlobalKey(),
-    'contactus': GlobalKey(),
+    'footer': GlobalKey(),
   };
   final ScrollController _scrollController = ScrollController();
   late final Map<String, Widget> sectionPages;
@@ -42,8 +42,8 @@ class _GlassyNavPageState extends State<GlassyNavPage> {
       'home': const HomePageSection(),
       'aboutus': const AboutUs(),
       'team': const TeamSection(),
-      'events': const events(),
-      'contactus': const contactUs(),
+      'events': const Events(),
+      'footer': const Footer(),
     };
 
     // Pre-cache images
@@ -112,14 +112,20 @@ class _GlassyNavPageState extends State<GlassyNavPage> {
           SingleChildScrollView(
             controller: _scrollController,
             child: Column(
-              children: navItems.map((item) {
-                final key = item.toLowerCase().replaceAll(' ', '');
-                // Wrap sections with RepaintBoundary to reduce repaint cost
-                return RepaintBoundary(
-                  key: sectionKeys[key],
-                  child: sectionPages[key]!,
-                );
-              }).toList(),
+              children: [
+                ...navItems.map((item) {
+                  final key = item.toLowerCase().replaceAll(' ', '');
+                  // Wrap sections with RepaintBoundary to reduce repaint cost
+                  return RepaintBoundary(
+                    key: sectionKeys[key],
+                    child: sectionPages[key]!,
+                  );
+                }).toList(),
+                RepaintBoundary(
+                  key: sectionKeys['footer'],
+                  child: sectionPages['footer']!,
+                ),
+              ]
             ),
           ),
 

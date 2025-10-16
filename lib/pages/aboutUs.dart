@@ -75,15 +75,27 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
                 child: Image.asset('assets/logo/logo.png', width: logoWidth),
               ),
               const SizedBox(height: 30),
-              Text(
-                "About EDS",
-                style: GoogleFonts.orbitron(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: isDarkMode ? Colors.white : Colors.black,
-                  letterSpacing: 1.2,
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: GoogleFonts.rajdhani(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: isDarkMode ? Colors.white : Colors.black,
+                    letterSpacing: 1.2,
+                  ),
+                  children: [
+                    const TextSpan(text: "About "),
+                    TextSpan(
+                      text: "EDS",
+                      style: TextStyle(
+                        color: Colors.pink[200], // highlight color
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
               const SizedBox(height: 20),
               SizedBox(
                 width: size.width * 0.85,
@@ -120,15 +132,30 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "About EDS",
-                      style: GoogleFonts.orbitron(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: isDarkMode ? Colors.white : Colors.black,
-                        letterSpacing: 1.2,
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: GoogleFonts.orbitron(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          color: isDarkMode ? Colors.white : Colors.black,
+                          letterSpacing: 1.2,
+                        ),
+                        children: [
+                          const TextSpan(text: "About "),
+                          TextSpan(
+                            text: "EDS",
+                            style: TextStyle(
+                              color: Colors.pink[200], // Highlighted color
+                              shadows: [
+
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+
                     const SizedBox(height: 30),
                     SizedBox(
                       width: 500,
