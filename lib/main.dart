@@ -1,24 +1,33 @@
 import 'package:eds_landing/pages/splashScreen.dart';
 import 'package:flutter/material.dart';
-import 'pages/homePage.dart';
+import 'package:provider/provider.dart';
+import 'theme/theme_provider.dart';
+import 'theme/app_theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
-routes: {
-  "/": (context) =>  SplashScreen(),
-  "/home": (context)  => homePage(),
-
-},
-
+      debugShowCheckedModeBanner: false,
+      themeMode: themeProvider.themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      routes: {
+        "/": (context) => const SplashScreen(),
+      },
     );
   }
 }
