@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 import '../theme/theme_provider.dart';
 
 class Events extends StatelessWidget {
@@ -42,7 +41,6 @@ class Events extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Main heading
             Text(
               "Our Exciting Events",
               textAlign: TextAlign.center,
@@ -53,7 +51,6 @@ class Events extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            // Subheading
             Text(
               "Explore what we have in store for you — workshops, hackathons, and more!",
               textAlign: TextAlign.center,
@@ -64,12 +61,11 @@ class Events extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 60),
-
-            // Cards with viewport-based animation
             LayoutBuilder(builder: (context, constraints) {
+              // Reduce card width by ~10%
               double cardWidth = constraints.maxWidth > 1200
-                  ? (constraints.maxWidth - 60) / 2
-                  : constraints.maxWidth * 0.95;
+                  ? ((constraints.maxWidth - 60) / 2) * 0.9
+                  : constraints.maxWidth * 0.9;
 
               return Wrap(
                 spacing: 40,
@@ -137,8 +133,8 @@ class _AnimatedEventCardState extends State<AnimatedEventCard>
     super.dispose();
   }
 
-  void _onVisibilityChanged(VisibilityInfo info) {
-    if (!_visibleOnce && info.visibleFraction > 0.1) {
+  void _onVisibilityChanged(bool visible) {
+    if (!_visibleOnce && visible) {
       _controller.forward();
       _visibleOnce = true;
     }
@@ -147,61 +143,71 @@ class _AnimatedEventCardState extends State<AnimatedEventCard>
   @override
   Widget build(BuildContext context) {
     final Color textColor = widget.isDarkMode ? Colors.white : Colors.black;
-    final Color cardColor = widget.isDarkMode ? Colors.grey[900]! : Colors.grey[300]!;
+    final Color cardColor =
+    widget.isDarkMode ? Colors.grey[900]! : Colors.grey[300]!;
 
     bool isMobile = widget.cardWidth < 800;
     double posterWidth = isMobile ? widget.cardWidth : widget.cardWidth * 0.4;
-    double posterHeight = isMobile ? widget.cardWidth * 0.6 : widget.cardWidth * 0.4;
+    double posterHeight = isMobile ? widget.cardWidth * 0.55 : widget.cardWidth * 0.35;
 
-    return VisibilityDetector(
-      key: Key(widget.event['title']!),
-      onVisibilityChanged: _onVisibilityChanged,
-      child: FadeTransition(
-        opacity: _fadeAnimation,
-        child: SlideTransition(
-          position: _slideAnimation,
-          child: Container(
-            width: widget.cardWidth,
-            padding: const EdgeInsets.all(18),
-            decoration: BoxDecoration(
-              color: cardColor,
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: widget.isDarkMode ? Colors.white12 : Colors.black12),
-              boxShadow: [
-                BoxShadow(
-                  color: widget.isDarkMode ? Colors.black45 : Colors.grey.withOpacity(0.3),
-                  blurRadius: 12,
-                  offset: const Offset(0, 6),
-                ),
-              ],
+    return LayoutBuilder(builder: (context, constraints) {
+      return TweenAnimationBuilder<double>(
+        tween: Tween<double>(begin: 0, end: 1),
+        duration: const Duration(milliseconds: 800),
+        builder: (context, value, child) {
+          return Opacity(
+            opacity: value,
+            child: Transform.translate(
+              offset: Offset(0, (1 - value) * 20),
+              child: child,
             ),
-            child: isMobile
-                ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _poster(widget.event['poster']!, posterWidth, posterHeight),
-                const SizedBox(height: 20),
-                _eventContent(widget.event, textColor),
-              ],
-            )
-                : Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: posterWidth,
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: _poster(widget.event['poster']!, posterWidth, posterHeight),
-                  ),
+          );
+        },
+        child: Container(
+          width: widget.cardWidth,
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+                color: widget.isDarkMode ? Colors.white12 : Colors.black12),
+            boxShadow: [
+              BoxShadow(
+                color: widget.isDarkMode
+                    ? Colors.black45
+                    : Colors.grey.withOpacity(0.3),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: isMobile
+              ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _poster(widget.event['poster']!, posterWidth, posterHeight),
+              const SizedBox(height: 20),
+              _eventContent(widget.event, textColor),
+            ],
+          )
+              : Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: posterWidth,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: _poster(
+                      widget.event['poster']!, posterWidth, posterHeight),
                 ),
-                const SizedBox(width: 20),
-                Expanded(child: _eventContent(widget.event, textColor)),
-              ],
-            ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(child: _eventContent(widget.event, textColor)),
+            ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _poster(String path, double width, double height) {
