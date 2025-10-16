@@ -38,12 +38,12 @@ Experience the project in action:
     <td><img src="mocups/about_dark.png" alt="About Dark" width="100%"></td>
   </tr>
   <tr>
-    <td><img src="mocups/events_light.png" alt="Events Light" width="100%"></td>
-    <td><img src="mocups/events_dark.png" alt="Events Dark" width="100%"></td>
-  </tr>
-  <tr>
     <td><img src="mocups/team_light.png" alt="Team Light" width="100%"></td>
     <td><img src="mocups/team_dark.png" alt="Team Dark" width="100%"></td>
+  </tr>
+    <tr>
+    <td><img src="mocups/events_light.png" alt="Events Light" width="100%"></td>
+    <td><img src="mocups/events_dark.png" alt="Events Dark" width="100%"></td>
   </tr>
 </table>
 
@@ -119,3 +119,4 @@ This project was done as a **task to join Echelon Dev Society (EDS)**. It demons
 ---
 
 © 2025 Nilesh Prajapat | All Rights Reserved
+
