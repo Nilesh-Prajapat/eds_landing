@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart'; // Add this
 import '../theme/theme_provider.dart';
 
 class Footer extends StatelessWidget {
@@ -42,8 +43,8 @@ class Footer extends StatelessWidget {
                 ? Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _brandingSection(
-                    isDarkMode, logoSize, titleFontSize, quoteFontSize, funLineFontSize),
+                _brandingSection(isDarkMode, logoSize, titleFontSize,
+                    quoteFontSize, funLineFontSize),
                 const SizedBox(height: 30),
                 _socialLinksSection(
                     isDarkMode, isMobile, socialIconSize, arrowSize),
@@ -55,8 +56,8 @@ class Footer extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 1,
-                  child: _brandingSection(
-                      isDarkMode, logoSize, titleFontSize, quoteFontSize, funLineFontSize),
+                  child: _brandingSection(isDarkMode, logoSize,
+                      titleFontSize, quoteFontSize, funLineFontSize),
                 ),
                 const SizedBox(width: 40),
                 Flexible(
@@ -121,9 +122,14 @@ class Footer extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
-                  TextSpan(text: "Echelon ", style: TextStyle(color: Colors.pink[200])),
-                  TextSpan(text: "Dev ", style: TextStyle(color: Colors.blue[200])),
-                  TextSpan(text: "Society", style: TextStyle(color: Colors.purple[200])),
+                  TextSpan(
+                      text: "Echelon ",
+                      style: TextStyle(color: Colors.pink[200])),
+                  TextSpan(
+                      text: "Dev ", style: TextStyle(color: Colors.blue[200])),
+                  TextSpan(
+                      text: "Society",
+                      style: TextStyle(color: Colors.purple[200])),
                 ],
               ),
             ),
@@ -149,7 +155,6 @@ class Footer extends StatelessWidget {
       ],
     );
   }
-
   Widget _socialLinksSection(
       bool isDarkMode, bool isMobile, double socialIconSize, double arrowSize) {
     final List<Map<String, String>> links = [
@@ -157,25 +162,25 @@ class Footer extends StatelessWidget {
         "label": "Email",
         "icon": "assets/icons/gmail.png",
         "arrow": "assets/icons/arrow.png",
-        "url": "mailto:hello@eds.com"
+        "url": "mailto:work.nilesh.pr@gmail.com"
       },
       {
         "label": "Discord",
         "icon": "assets/icons/discord.png",
         "arrow": "assets/icons/arrow.png",
-        "url": "https://discord.gg/yourserver"
+        "url": "https://discord.com/users/3ZBF6AQtW"
       },
       {
         "label": "Instagram",
         "icon": "assets/icons/instagram.png",
         "arrow": "assets/icons/arrow.png",
-        "url": "https://instagram.com/yourprofile"
+        "url": "https://instagram.com/nilesh__pr_"
       },
       {
         "label": "LinkedIn",
         "icon": "assets/icons/linkedin.png",
         "arrow": "assets/icons/arrow.png",
-        "url": "https://linkedin.com/in/yourprofile"
+        "url": "https://www.linkedin.com/in/Nilesh-Prajapat"
       },
     ];
 
@@ -187,9 +192,13 @@ class Footer extends StatelessWidget {
       alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
       children: links.map((link) {
         return InkWell(
-          onTap: () {
-            // Use url_launcher to open links
-            // launchUrl(Uri.parse(link["url"]!));
+          onTap: () async {
+            final Uri url = Uri.parse(link["url"]!);
+            if (await canLaunchUrl(url)) {
+              await launchUrl(url);
+            } else {
+              throw 'Could not launch ${link["url"]}';
+            }
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -223,4 +232,6 @@ class Footer extends StatelessWidget {
         );
       }).toList(),
     );
-  }}
+  }
+
+}
