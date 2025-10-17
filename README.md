@@ -64,7 +64,6 @@ Experience the project in action:
 
 - **Framework:** Flutter  
 - **Hosting:** Vercel  
-- **Languages:** Dart, HTML/CSS  
 - **Platforms:** Web, Android, iOS  
 
 ---
@@ -119,5 +118,6 @@ This project was done as a **task to join Echelon Dev Society (EDS)**. It demons
 ---
 
 © 2025 Nilesh Prajapat | All Rights Reserved
+
 
 
